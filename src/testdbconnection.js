@@ -1,11 +1,20 @@
-const sql = require('msnodesqlv8');
+const sql = require('mssql');
 
-const connectionString = 'Driver={ODBC Driver 17 for SQL Server};Server={localhost};Database={EmployeeDB};Trusted_Connection={yes};';
-
-sql.query(connectionString, 'SELECT * FROM Employees', (err, rows) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(rows);
+const config = {
+  user: '',
+  password: '',
+  server: 'devsql159.database.windows.net',
+  database: 'ActivityTrackerDB',
+  options: {
+    encrypt: true, 
+    trustServerCertificate: true 
   }
+};
+
+sql.connect(config).then(pool => {
+  return pool.request().query('SELECT * FROM Users');
+}).then(result => {
+  console.log(result.recordset);
+}).catch(err => {
+  console.error(err);
 });

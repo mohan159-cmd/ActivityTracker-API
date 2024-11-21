@@ -7,7 +7,7 @@ app.use(express.json()); // To parse JSON requests
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('Welcome to the Movie Collection Management System!');
+  res.send('Welcome to the Tracker API!');
 });
 
 app.use('/v1/', apiRouters);
