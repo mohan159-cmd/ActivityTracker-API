@@ -14,7 +14,7 @@ const getUsersModel = async() => {
     }
  }
 
- const getUserbyIdModel = async (id) => {
+const getUserbyIdModel = async (id) => {
    try {
       const sqlQuery = dbqueries.users.select_user_by_id;
       const parameters = [id]; 
@@ -27,9 +27,40 @@ const getUsersModel = async() => {
    }
 };
 
+const getUserbyEmailModel = async (params) => {
+   try {
+      const { email } = params;
+      const sqlQuery = dbqueries.users.select_user_by_email;
+      const parameters = [email]; 
+      const finalQuery = createSqlQueryusingParams(sqlQuery, parameters);
+      console.log("User By Email query: ", finalQuery);
+      const result = await query(finalQuery);
+      return result;
+   } catch (error) {
+      throw error; 
+   }
+};
+
+const createNewUserModel = (params) => {
+    try{
+      const { firstName,lastName, email, password } = params;
+      const sqlQuery = dbqueries.users.insert_user;
+      const parameters = [firstName, lastName, email, password];
+      const finalQuery = createSqlQueryusingParams(sqlQuery, parameters);
+      console.log("New User query: ", finalQuery);
+      const result = query(finalQuery);
+      return result;
+    }
+    catch(error){
+      throw error;
+    }
+}
+
  
  module.exports = {
    getUsersModel,
-   getUserbyIdModel
+   getUserbyIdModel,
+   createNewUserModel,
+   getUserbyEmailModel
  }
  

@@ -75,6 +75,7 @@ VALUES
 
 
 
+
 -- Check all tables
 SELECT * FROM Users;
 SELECT * FROM Categories;
