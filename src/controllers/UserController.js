@@ -1,4 +1,4 @@
-const { getUserbyIdModel, getUsersModel, createNewUserModel, getUserbyEmailModel } = require("../models/UserModel");
+const { getUserbyIdModel, getUsersModel, createNewUserModel, getUserbyEmailModel, updateUserModel } = require("../models/UserModel");
 
 
 const getUsersController = async (req, res) => {
@@ -40,8 +40,25 @@ const createNewUserController = async (req, res) => {
   }
 };
 
+const updateUserController = async(req,res) => {
+  try{
+    const { firstName,lastName, email, password } = req.body;
+    if (!firstName || !lastName || !email || !password) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+    const result = await updateUserModel({ firstName,lastName, email, password });
+    res.status(200).json({
+      message: "user updated sucessfully"
+    })
+  }
+  catch(error){
+    res.status(500).json({ error: error })
+  }
+}
+
 module.exports = {
     getUsersController,
     getUserbyIdController,
-    createNewUserController
+    createNewUserController,
+    updateUserController
 };

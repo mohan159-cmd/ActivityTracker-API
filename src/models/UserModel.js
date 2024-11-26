@@ -35,13 +35,16 @@ const getUserbyEmailModel = async (params) => {
       const finalQuery = createSqlQueryusingParams(sqlQuery, parameters);
       console.log("User By Email query: ", finalQuery);
       const result = await query(finalQuery);
+      if(result.length === 0){
+         return false
+      }
       return result;
    } catch (error) {
       throw error; 
    }
 };
 
-const createNewUserModel = (params) => {
+const createNewUserModel = async (params) => {
     try{
       const { firstName,lastName, email, password } = params;
       const sqlQuery = dbqueries.users.insert_user;
@@ -56,11 +59,27 @@ const createNewUserModel = (params) => {
     }
 }
 
+const updateUserModel = async(params) => {
+    try{
+      const { userId,firstName,lastName, email, password } = params;
+      const sqlQuery = dbqueries.users.update_user;
+      const parameters = [email, firstName, lastName, password];
+      const finalQuery = createSqlQueryusingParams(sqlQuery,parameters);
+      console.log("Update User Query: ", finalQuery);
+      const result = query(finalQuery);
+      return result;
+    }
+    catch(error){
+      throw error;
+    }
+}
+
  
  module.exports = {
    getUsersModel,
    getUserbyIdModel,
    createNewUserModel,
-   getUserbyEmailModel
+   getUserbyEmailModel,
+   updateUserModel
  }
  
