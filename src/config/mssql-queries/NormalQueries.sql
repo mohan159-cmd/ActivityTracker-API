@@ -20,3 +20,9 @@ WHERE UserID = 1;
  
 
 SELECT * FROM Users WHERE EmailAddress = 'firstuser@example.com'
+SELECT * FROM Categories
+
+INSERT INTO Categories (Name,Description,UserID,isDefault)
+VALUES ('Cat 1', 'descv', 6, 0)
+
+SELECT * FROM Catlogs WHERE CategoryID = 2
