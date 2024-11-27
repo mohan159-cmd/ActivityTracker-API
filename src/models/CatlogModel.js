@@ -19,8 +19,23 @@ try{
  }
 }
 
+const createCatlogModel = async (params) => {
+    try {
+        const { categoryId,name,description,todayDate } = params;
+        const sqlquery = dbqueries.catlogs.create_catlog;
+        const parameters = [categoryId,name,description,todayDate];
+        const finalQuery = createSqlQueryusingParams(sqlquery, parameters);
+        console.log("create catlog : ", finalQuery);
+        const result = await query(finalQuery);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};
+
 //#region exports
 module.exports = {
-    getCatlogsByCategoryIdModel
+    getCatlogsByCategoryIdModel,
+    createCatlogModel
 }
 //#endregion exports

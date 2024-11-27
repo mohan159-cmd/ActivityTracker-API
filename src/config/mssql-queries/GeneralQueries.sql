@@ -37,12 +37,49 @@ EXEC sp_rename 'Users.Email', 'EmailAddress', 'COLUMN';
 SELECT 
     CONSTRAINT_NAME
 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
-WHERE TABLE_NAME = 'Activities' 
+WHERE TABLE_NAME = 'Catlogs' 
   AND CONSTRAINT_TYPE = 'FOREIGN KEY';
 
-ALTER TABLE Activities
-DROP CONSTRAINT FK__Activitie__UserI__02084FDA;
+ALTER TABLE Catlogs
+DROP CONSTRAINT FK__Catlogs__UserID__7E37BEF6;
+
+ALTER TABLE Catlogs
+DROP COLUMN UserID;
+
+--add forign key
 
 ALTER TABLE Activities
-DROP COLUMN UserID;
+ADD UserID INT; -- Adjust the data type to match the Users table primary key
+
+ALTER TABLE Activities
+ADD CONSTRAINT FK_Activities_UserID
+FOREIGN KEY (UserID)
+REFERENCES Users(UserID)
+ON DELETE CASCADE; -- Optional: adjust ON DELETE behavior as needed
+
+SELECT 
+    CONSTRAINT_NAME,
+    TABLE_NAME,
+    COLUMN_NAME
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE TABLE_NAME = 'Activities';
+
+SELECT * FROM Users;
+SELECT * FROM Categories;
+SELECT * FROM Catlogs;
+SELECT * FROM Activities;
+
+--joints
+SELECT
+   Catlogs.CatlogID,
+   Catlogs.Name,
+   Catlogs.Overview,
+   Catlogs.CategoryID,
+   Categories.Name AS CategoryName
+FROM
+   Catlogs
+JOIN 
+   Categories ON Catlogs.CategoryID = Categories.CategoryID;
+
+SELECT Catlogs.CatlogID, Catlogs.Name, Catlogs.Overview, Catlogs.CategoryID, Categories.Name AS CategoryName FROM Catlogs JOIN Categories ON Catlogs.CategoryID = Categories.CategoryID WHERE Categories.CategoryID = 2
 
