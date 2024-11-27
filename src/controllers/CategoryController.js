@@ -1,4 +1,4 @@
-const { getCategoriesByUserIdModel } = require("../models/CategoryModel");
+const { getCategoriesByUserIdModel, createCategoriesByUserIdModel } = require("../models/CategoryModel");
 
 const getCategoriesByUserIdController = async(req,res) => {
     try{
@@ -11,6 +11,18 @@ const getCategoriesByUserIdController = async(req,res) => {
     }
 }
 
+const createCategoryByUserIdController = async(req,res) => {
+    try{
+       const { name,description,userId } = req.body;
+       const result = await createCategoriesByUserIdModel({ name,description,userId });
+       res.status(200).json({ message: "Category created successfully" });
+    }
+    catch(err){
+        res.status(500).json({ error: err });
+    }
+}
+
 module.exports = {
-    getCategoriesByUserIdController
+    getCategoriesByUserIdController,
+    createCategoryByUserIdController
 }

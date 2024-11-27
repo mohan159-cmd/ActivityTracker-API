@@ -7,7 +7,8 @@ const dbqueries = {
        update_user: "UPDATE Users SET EmailAddress = '{0}', FirstName = '{1}', LastName = '{2}', Password = '{3}' WHERE EmailAddress = '{0}'"
     },
     "categories": {
-        categories_by_userid: "SELECT * FROM Categories where UserID = {0}"
+        categories_by_userid: "SELECT * FROM Categories where UserID = {0}",
+        create_category_by_userid: "INSERT INTO Categories (Name,Description,UserID,isDefault) VALUES ('{0}', '{1}', {2}, 0)"
     }
 }
 

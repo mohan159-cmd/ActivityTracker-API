@@ -9,5 +9,6 @@ router.post("/CreateNewUser", userController.createNewUserController);
 router.put("/UpdateUser", userController.updateUserController);
 
 router.get("/GetCategoriesbyUserId/userId=:userId", categoryController.getCategoriesByUserIdController)
+router.post("/CreateCategory", categoryController.createCategoryByUserIdController)
 
 module.exports = router;
