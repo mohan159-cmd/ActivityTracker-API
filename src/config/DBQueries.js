@@ -12,6 +12,9 @@ const dbqueries = {
     },
     "catlogs":{
        select_catlogs_by_categoryId: "SELECT * FROM Catlogs WHERE CategoryID = {0}"
+    },
+    "activities":{
+        select_activities_by_catlogId: "SELECT * FROM Activities WHERE CatlogID = {0}"
     }
 }
 

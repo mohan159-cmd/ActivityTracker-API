@@ -33,3 +33,16 @@ ADD LastName VARCHAR(100);
 --renamin columns
 EXEC sp_rename 'Users.Email', 'EmailAddress', 'COLUMN';
 
+--remove froegin keys from a table
+SELECT 
+    CONSTRAINT_NAME
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE TABLE_NAME = 'Activities' 
+  AND CONSTRAINT_TYPE = 'FOREIGN KEY';
+
+ALTER TABLE Activities
+DROP CONSTRAINT FK__Activitie__UserI__02084FDA;
+
+ALTER TABLE Activities
+DROP COLUMN UserID;
+
