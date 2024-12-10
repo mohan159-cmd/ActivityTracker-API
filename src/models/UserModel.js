@@ -1,6 +1,6 @@
 //#region imports
 const { query } = require('../config/dbHelper');
-const { dbqueries } = require('../config/dbqueries');
+const { dbqueries } = require('../config/DBQueries');
 const { createSqlQueryusingParams } = require('../utils/CommonFunctions');
 
 //#region functions
