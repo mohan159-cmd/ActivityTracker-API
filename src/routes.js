@@ -21,4 +21,10 @@ router.post("/CreateActivity", activitiesController.createActivityByCatlogIdCont
 router.get("/GetActivitybyId/activityId=:activityId",activitiesController.getActivityByIdController)
 router.put("/UpdateActivity", activitiesController.updateActivityByIdController)
 
+// Error logging middleware
+router.use((err, req, res, next) => {
+    console.error(`Error in route: ${req.originalUrl}`, err.stack || err);
+    res.status(500).json({ message: 'Internal Server Error', error: err.message });
+  });
+
 module.exports = router;
