@@ -16,6 +16,9 @@ router.post("/CreateCategory", categoryController.createCategoryByUserIdControll
 router.get("/GetCatlogsbyCatgeoryId/categoryId=:categoryId", catlogController.getCatlogsByCategoryIdController)
 router.post("/CreateCatlog", catlogController.createCatlogController)
 
-router.get("/GetActivitiesbyCatlogId/catlogId=:catlogId",activitiesController.getActivitiesByCatlogIdController )
+router.get("/GetActivitiesbyCatlogId/catlogId=:catlogId",activitiesController.getActivitiesByCatlogIdController)
+router.post("/CreateActivity", activitiesController.createActivityByCatlogIdController)
+router.get("/GetActivitybyId/activityId=:activityId",activitiesController.getActivityByIdController)
+router.put("/UpdateActivity", activitiesController.updateActivityByIdController)
 
 module.exports = router;
