@@ -11,6 +11,11 @@ const getActivitiesByCatlogIdController = async(req,res) => {
     }
 }
 
+
+
+
+
+
 const getActivityByIdController = async(req,res) => {
     try{
         const { activityId } = req.params;
