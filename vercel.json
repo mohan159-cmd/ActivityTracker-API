@@ -11,8 +11,5 @@
       "src": "/(.*)",
       "dest": "src/app.js"
     }
-  ],
-  "includeFiles": [
-    "src/config/dbqueries.js"
   ]
 }
