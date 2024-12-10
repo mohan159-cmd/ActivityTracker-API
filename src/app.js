@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const apiRouters = require('./routes');
-const { dbqueries } = require('../config/dbqueries');
 
 // Middleware to parse JSON requests
 app.use(express.json());
