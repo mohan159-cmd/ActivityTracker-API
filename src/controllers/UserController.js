@@ -6,7 +6,7 @@ const getUsersController = async (req, res) => {
     const users = await getUsersModel();
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: error || "Error fetching users in controller" });
   }
 };
 

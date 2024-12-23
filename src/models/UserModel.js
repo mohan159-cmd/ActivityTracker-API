@@ -10,7 +10,7 @@ const getUsersModel = async() => {
        return result;
     }
     catch(error){
-     throw err;
+     throw "error connecting to database";
     }
  }
 
