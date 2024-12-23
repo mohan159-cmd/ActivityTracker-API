@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/236dd293-66b8-4ac3-8264-25c93e974eca/resourceGroups/ActivityTracker/providers/Microsoft.Web/sites/activitytrackerapiv1",
+    "appService.deploySubpath": "."
+}
