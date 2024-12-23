@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const apiRouters = require('./routes');
+const apiRouters = require('./src/routes');
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -19,12 +19,12 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Internal Server Error' });
 });
 
-/* // Start the server
+// Start the server
 app.listen(8080, () => {
   console.log('Server is running on port 8080');
-}); */
+}); 
 
-// Export as handler for Vercel
+// Export as handler for web app
 module.exports = (req, res) => {
   app(req, res);
 };
