@@ -7,7 +7,7 @@ const { createSqlQueryusingParams } = require('../utils/CommonFunctions');
 const getCategoriesByUserIdModel = async(params) => {
 try{
     const { userId } = params;
-    const sqlquery = dbqueries.categories.create_category_by_userid;
+    const sqlquery = dbqueries.categories.categories_by_userid;
     const parameters = [userId];
     const finalQuery = createSqlQueryusingParams(sqlquery,parameters);
     console.log("get category by userid : ", finalQuery )
