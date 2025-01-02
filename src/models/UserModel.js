@@ -74,12 +74,28 @@ const updateUserModel = async(params) => {
     }
 }
 
- 
+const getUserAuthenticationModel = async(params) => {
+   try{
+      const { email,password } = params;
+      const sqlQuery = dbqueries.users.check_user_credentials;
+      const parameters = [email,password];
+      const finalQuery = createSqlQueryusingParams(sqlQuery,parameters);
+      console.log("Check User Query:  ", finalQuery)
+      const result = query(finalQuery);
+      return result;
+   }
+   catch(error){
+      throw error;
+   }
+}
+
+//#region exports
  module.exports = {
    getUsersModel,
    getUserbyIdModel,
    createNewUserModel,
    getUserbyEmailModel,
-   updateUserModel
+   updateUserModel,
+   getUserAuthenticationModel
  }
  

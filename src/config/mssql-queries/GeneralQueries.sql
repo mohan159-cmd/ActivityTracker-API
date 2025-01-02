@@ -6,6 +6,7 @@ SELECT * FROM Activities;
 
 SELECT * FROM Users WHERE UserID = 1
 
+
 --Update values
 UPDATE Categories SET isDefault = 1
 
