@@ -4,15 +4,15 @@ const { dbqueries } = require('../config/DBQueries');
 const { createSqlQueryusingParams } = require('../utils/CommonFunctions');
 
 //#region functions
-const getUsersModel = async() => {
-    try{
-       const result = await query(dbqueries.users.select_all_users)
+const getUsersModel = async () => {
+   try {
+       const result = await query(dbqueries.users.select_all_users);
        return result;
-    }
-    catch(error){
-     throw "error connecting to database";
-    }
- }
+   } catch (error) {
+       console.error('Error in getUsersModel:', error); // Log the detailed error
+       throw new Error(`Error connecting to database: ${error.message || error}`);
+   }
+};
 
 const getUserbyIdModel = async (id) => {
    try {
