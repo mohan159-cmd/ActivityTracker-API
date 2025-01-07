@@ -8,7 +8,7 @@ try {
 
     router.get('/GetAllUsers', userController.getUsersController);
     router.get('/GetUserbyId/id=:id', userController.getUserbyIdController);
-    router.get('/checkLoginCredentials', userController.getUserAuthenticationController)
+    router.post('/checkLoginCredentials', userController.getUserAuthenticationController)
     router.post('/CreateNewUser', userController.createNewUserController);
     router.put('/UpdateUser', userController.updateUserController);
 
