@@ -20,6 +20,16 @@ const getUserbyIdController = async (req, res) => {
   }
 };
 
+const getUserbyEmailController = async (req, res) => {
+  try {
+    const { email } = req.query;
+    const user = await getUserbyEmailModel({ email });
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+}
+
 const createNewUserController = async (req, res) => {
   try {
     const { firstName,lastName, email, password } = req.body;
@@ -82,5 +92,6 @@ module.exports = {
     getUserbyIdController,
     createNewUserController,
     updateUserController,
-    getUserAuthenticationController
+    getUserAuthenticationController,
+    getUserbyEmailController
 };

@@ -11,6 +11,7 @@ try {
     router.post('/checkLoginCredentials', userController.getUserAuthenticationController)
     router.post('/CreateNewUser', userController.createNewUserController);
     router.put('/UpdateUser', userController.updateUserController);
+    router.get('/getUserByEmailId', userController.getUserbyEmailController)
 
     router.get('/GetCategoriesbyUserId/userId=:userId', categoryController.getCategoriesByUserIdController);
     router.post('/CreateCategory', categoryController.createCategoryByUserIdController);
