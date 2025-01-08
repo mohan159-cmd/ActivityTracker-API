@@ -1,6 +1,10 @@
 const express = require('express');
+const cors = require('cors'); // Import CORS middleware
 const app = express();
 const apiRouters = require('./routes');
+
+// Enable CORS
+app.use(cors());
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -20,12 +24,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 8080; // Default to 3000 if no PORT env variable
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-/* // Start the server
-app.listen(8080, () => {
-  console.log('Server is running on port 8080');
-});  */ 
