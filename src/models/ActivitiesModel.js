@@ -36,9 +36,9 @@ const getActivityByIdModel = async(params) => {
 
 const createActivityByCatlogIdModel = async (params) => {
     try {
-        const { catlogId,name,description,createdDate,startDate,endDate } = params;
+        const { catlogId,name,description,createdDate,startDate,endDate,fileURL } = params;
         const sqlquery = dbqueries.activities.create_activity_by_catlogId;
-        const parameters = [catlogId,name,description,createdDate,startDate,endDate];
+        const parameters = [catlogId,name,description,createdDate,startDate,endDate,fileURL];
         const finalQuery = createSqlQueryusingParams(sqlquery, parameters);
         console.log("create activity by catlog id : ", finalQuery);
         const result = await query(finalQuery);

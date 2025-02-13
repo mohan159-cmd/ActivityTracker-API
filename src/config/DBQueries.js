@@ -18,7 +18,7 @@ const dbqueries = {
     "activities":{
         select_activities_by_catlogId: "SELECT * FROM Activities WHERE CatlogID = {0}",
         select_activity_by_id: "SELECT * FROM Activities WHERE ActivityID = {0}",
-        create_activity_by_catlogId: "INSERT INTO Activities (CatlogID,Name,Description,CreatedDate,StartDate,EndDate) VALUES ({0}, '{1}', '{2}', '{3}', '{4}','{5}')",
+        create_activity_by_catlogId: "INSERT INTO Activities (CatlogID,Name,Description,CreatedDate,StartDate,EndDate,Image) VALUES ({0}, '{1}', '{2}', '{3}', '{4}','{5}','{6}')",
         update_activity_by_id: "UPDATE Activities SET Name = '{0}', Description = '{1}', StartDate = '{2}', EndDate = '{3}' WHERE ActivityID = {4}"
     }
 }

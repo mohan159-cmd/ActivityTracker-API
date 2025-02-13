@@ -1,6 +1,11 @@
 const express = require('express');
 const { getFiles } = require('./utils/FileUploadFunction');
+
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
 const router = express.Router();
+
 try {
     const userController = require('./controllers/UserController');
     const categoryController = require('./controllers/CategoryController');
@@ -21,7 +26,7 @@ try {
     router.post('/CreateCatlog', catlogController.createCatlogController);
 
     router.get('/GetActivitiesbyCatlogId/catlogId=:catlogId', activitiesController.getActivitiesByCatlogIdController);
-    router.post('/CreateActivity', activitiesController.createActivityByCatlogIdController);
+    router.post('/CreateActivity', upload.single('file'), activitiesController.createActivityByCatlogIdController);
     router.get('/GetActivitybyId/activityId=:activityId', activitiesController.getActivityByIdController);
     router.put('/UpdateActivity', activitiesController.updateActivityByIdController);
 

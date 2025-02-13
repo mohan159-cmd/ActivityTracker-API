@@ -21,6 +21,33 @@ const getFiles = async (req, res) => {
     }
 };
 
+const uploadFile = async (containerName,file) => {
+    try {
+        const CONTAINER_NAME = containerName || "websiteimage"; // Default container name
+        const containerClient = blobServiceClient.getContainerClient(CONTAINER_NAME);
+
+        // Create the container if it doesn't exist (optional, but good practice)
+        const createContainerResponse = await containerClient.createIfNotExists();
+        console.log(`createContainerResponse: ${createContainerResponse.requestId}`);
+
+        // Get the blob client
+        const blockBlobClient = containerClient.getBlockBlobClient(file.filename); // Use original filename
+
+        // Upload the file
+        const uploadBlobResponse = await blockBlobClient.uploadFile(file.path); // Use file path
+        console.log(`uploadBlobResponse: ${uploadBlobResponse.requestId}`);
+
+        // Get the URL of the uploaded blob
+        const blobUrl = blockBlobClient.url;
+
+        return blobUrl; // Return the URL
+    } catch (error) {
+        console.error("Error uploading to Azure Blob Storage:", error);
+        throw error; // Re-throw the error to be handled by the caller
+    }
+};
+
 module.exports = {
-    getFiles
+    getFiles,
+    uploadFile
 };

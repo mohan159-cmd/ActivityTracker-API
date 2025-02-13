@@ -8,6 +8,7 @@ app.use(cors());
 
 // Middleware to parse JSON requests
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Test route
 app.get('/', (req, res) => {

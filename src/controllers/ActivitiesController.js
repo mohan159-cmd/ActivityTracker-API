@@ -1,4 +1,5 @@
 const { getActivitiesByCatlogIdModel, createActivityByCatlogIdModel, getActivityByIdModel, upateActivityByIdModel, updateActivityByIdModel } = require("../models/ActivitiesModel");
+const { uploadFile } = require("../utils/FileUploadFunction");
 
 const getActivitiesByCatlogIdController = async (req, res) => {
     try {
@@ -25,9 +26,22 @@ const getActivityByIdController = async (req, res) => {
 
 const createActivityByCatlogIdController = async (req, res) => {
     try {
-        const { catlogId, name, description, createdDate, startDate, endDate } = req.body;
-        const activity = await createActivityByCatlogIdModel({ catlogId, name, description, createdDate, startDate, endDate });
-        res.status(200).json("Activity Created Successfully");
+        const parsedData = JSON.parse(req.body.activityDetails);
+        const { catlogId, name, description, createdDate, startDate, endDate } = parsedData;
+        const file = req.file;
+        if(file){
+            const fileURL = await uploadFile("activities",file);
+            if (typeof fileURL === 'string') {
+                const activity = await createActivityByCatlogIdModel({ catlogId, name, description, createdDate, startDate, endDate, fileURL });
+                res.status(200).json("Activity Created Successfully");
+            }else{
+                res.status(500).json({ error: "unable to upload the file" })
+            }
+        }else{
+            const fileURL = ""
+            const activity = await createActivityByCatlogIdModel({ catlogId, name, description, createdDate, startDate, endDate, fileURL });
+            res.status(200).json("Activity Created Successfully");
+        }
     }
     catch (error) {
         res.status(500).json({ error: error });
