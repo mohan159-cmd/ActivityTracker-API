@@ -38,10 +38,10 @@ try {
         res.status(500).json({ message: 'Internal Server Error', error: err.message });
     });
 
-    } catch (error) {
-        console.error('Error initializing router:', error.stack || error);
-        router.use((req, res) => {
-            res.status(500).json({ message: 'Critical error in server initialization', error: error.message });
-        });
-    }
+} catch (error) {
+    console.error('Error initializing router:', error.stack || error);
+    router.use((req, res) => {
+        res.status(500).json({ message: 'Critical error in server initialization', error: error.message });
+    });
+}
 module.exports = router;
