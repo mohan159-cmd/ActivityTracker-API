@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Test route
 app.get('/', (req, res) => {
-  res.send('Welcome to the Tracker API!');
+  res.send('Welcome to the Tracker API!'); 
 });
 
 // API routes
