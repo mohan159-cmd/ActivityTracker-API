@@ -12,7 +12,7 @@ const dbqueries = {
         create_category_by_userid: "INSERT INTO Categories (Name,Description,UserID,isDefault) VALUES ('{0}', '{1}', {2}, 0)"
     },
     "catlogs": {
-        select_catlogs_by_categoryId: "SELECT Catlogs.CatlogID, Catlogs.Name, Catlogs.Description,Catlogs.StartDate,Catlogs.EndDate, Catlogs.CategoryID, Categories.Name AS CategoryName FROM Catlogs JOIN Categories ON Catlogs.CategoryID = Categories.CategoryID WHERE Categories.CategoryID = {0}",
+        select_catlogs_by_categoryId: "SELECT Catlogs.CatlogID, Catlogs.Name, Catlogs.Description,Catlogs.CategoryID, Categories.Name AS CategoryName FROM Catlogs JOIN Categories ON Catlogs.CategoryID = Categories.CategoryID WHERE Categories.CategoryID = {0}",
         create_catlog: "INSERT INTO Catlogs (CategoryID, Name, Description, CreatedDate) VALUES ('{0}', '{1}', '{2}', '{3}')"
     },
     "activities":{
