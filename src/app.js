@@ -25,7 +25,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 if (!PORT) {
   throw new Error('PORT is not defined');
 }
