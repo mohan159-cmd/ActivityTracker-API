@@ -1,7 +1,8 @@
 require("dotenv").config();
 const { BlobServiceClient } = require("@azure/storage-blob");
+const { connectionString } = require("../variables");
 
-const AZURE_STORAGE_CONNECTION_STRING = process.env.BLOB_CONNECTION_STRING;
+const AZURE_STORAGE_CONNECTION_STRING = connectionString.BLOB_CONNECTION_STRING;
 const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 const getFiles = async (req, res) => {
