@@ -2,7 +2,19 @@ const express = require('express');
 const { getFiles } = require('./utils/FileUploadFunction');
 
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Save to 'uploads' folder
+    },
+    filename: function (req, file, cb) {
+        const ext = path.extname(file.originalname); // Get file extension
+        cb(null, file.fieldname + '-' + Date.now() + ext); // Preserve extension
+    }
+});
+
+const upload = multer({ storage: storage });
 
 const router = express.Router();
 
