@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 // API routes
-/* app.use('/v1', apiRouters); */
+app.use('/v1', apiRouters);
 
 // Error-handling middleware
 app.use((err, req, res, next) => {
