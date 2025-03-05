@@ -24,11 +24,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Internal Server Error 159' });
 });
 
-// Start the server
+/* // Start the server
 const PORT = process.env.PORT || 8080;
 if (!PORT) {
   throw new Error('PORT is not defined');
 }
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
+}); */
